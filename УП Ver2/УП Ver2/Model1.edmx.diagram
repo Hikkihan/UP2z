@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="417d3fea5a344b57b1c85c1f1b699701" Name="Diagram1">
+        <EntityTypeShape EntityType="УП2Model.Name" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="УП2Model.Role" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="УП2Model.sysdiagrams" Width="1.5" PointX="7.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="УП2Model.Title" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="УП2Model.UserData" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="УП2Model.Заметки_пользователя" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="УП2Model.Избранное_пользователя" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="УП2Model.FK_Name_Title" ManuallyRouted="false" />
+        <AssociationConnector Association="УП2Model.FK_UserData_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="УП2Model.FK_Заметки_пользователя_Title" ManuallyRouted="false" />
+        <AssociationConnector Association="УП2Model.FK_Избранное_пользователя_Title" ManuallyRouted="false" />
+        <AssociationConnector Association="УП2Model.FK_Заметки_пользователя_UserData" ManuallyRouted="false" />
+        <AssociationConnector Association="УП2Model.FK_Избранное_пользователя_UserData" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

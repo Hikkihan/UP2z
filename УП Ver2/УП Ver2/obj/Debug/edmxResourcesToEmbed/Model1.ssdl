@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище УП2Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Name">
+    <Key>
+      <PropertyRef Name="ID Названия" />
+    </Key>
+    <Property Name="ID Названия" Type="int" Nullable="false" />
+    <Property Name="Название" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Класс ПО" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Дата" Type="smalldatetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Роль" />
+    </Key>
+    <Property Name="Роль" Type="nchar" MaxLength="13" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Title">
+    <Key>
+      <PropertyRef Name="Класс ПО" />
+    </Key>
+    <Property Name="Класс ПО" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserData">
+    <Key>
+      <PropertyRef Name="login" />
+    </Key>
+    <Property Name="login" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="pass" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="Имя" Type="nchar" MaxLength="30" />
+    <Property Name="Фамилия" Type="nchar" MaxLength="30" />
+    <Property Name="Телефон" Type="nchar" MaxLength="11" />
+    <Property Name="Роль" Type="nchar" MaxLength="13" />
+  </EntityType>
+  <EntityType Name="Заметки пользователя">
+    <Key>
+      <PropertyRef Name="Номер заметки" />
+    </Key>
+    <Property Name="Номер заметки" Type="int" Nullable="false" />
+    <Property Name="Логин" Type="nchar" MaxLength="30" />
+    <Property Name="Класс ПО" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Избранное пользователя">
+    <Key>
+      <PropertyRef Name="Номер избранного" />
+    </Key>
+    <Property Name="Номер избранного" Type="int" Nullable="false" />
+    <Property Name="Логин" Type="nchar" MaxLength="30" />
+    <Property Name="Класс_ПО" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK_Name_Title">
+    <End Role="Title" Type="Self.Title" Multiplicity="1" />
+    <End Role="Name" Type="Self.Name" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Title">
+        <PropertyRef Name="Класс ПО" />
+      </Principal>
+      <Dependent Role="Name">
+        <PropertyRef Name="Класс ПО" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserData_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="UserData" Type="Self.UserData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Роль" />
+      </Principal>
+      <Dependent Role="UserData">
+        <PropertyRef Name="Роль" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заметки пользователя_Title">
+    <End Role="Title" Type="Self.Title" Multiplicity="0..1" />
+    <End Role="Заметки пользователя" Type="Self.Заметки пользователя" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Title">
+        <PropertyRef Name="Класс ПО" />
+      </Principal>
+      <Dependent Role="Заметки пользователя">
+        <PropertyRef Name="Класс ПО" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заметки пользователя_UserData">
+    <End Role="UserData" Type="Self.UserData" Multiplicity="0..1" />
+    <End Role="Заметки пользователя" Type="Self.Заметки пользователя" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserData">
+        <PropertyRef Name="login" />
+      </Principal>
+      <Dependent Role="Заметки пользователя">
+        <PropertyRef Name="Логин" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Избранное пользователя_Title">
+    <End Role="Title" Type="Self.Title" Multiplicity="0..1" />
+    <End Role="Избранное пользователя" Type="Self.Избранное пользователя" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Title">
+        <PropertyRef Name="Класс ПО" />
+      </Principal>
+      <Dependent Role="Избранное пользователя">
+        <PropertyRef Name="Класс_ПО" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Избранное пользователя_UserData">
+    <End Role="UserData" Type="Self.UserData" Multiplicity="0..1" />
+    <End Role="Избранное пользователя" Type="Self.Избранное пользователя" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserData">
+        <PropertyRef Name="login" />
+      </Principal>
+      <Dependent Role="Избранное пользователя">
+        <PropertyRef Name="Логин" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище УП2ModelContainer">
+    <EntitySet Name="Name" EntityType="Self.Name" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Title" EntityType="Self.Title" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserData" EntityType="Self.UserData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Заметки пользователя" EntityType="Self.Заметки пользователя" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Избранное пользователя" EntityType="Self.Избранное пользователя" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Name_Title" Association="Self.FK_Name_Title">
+      <End Role="Title" EntitySet="Title" />
+      <End Role="Name" EntitySet="Name" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserData_Role" Association="Self.FK_UserData_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserData" EntitySet="UserData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заметки пользователя_Title" Association="Self.FK_Заметки пользователя_Title">
+      <End Role="Title" EntitySet="Title" />
+      <End Role="Заметки пользователя" EntitySet="Заметки пользователя" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заметки пользователя_UserData" Association="Self.FK_Заметки пользователя_UserData">
+      <End Role="UserData" EntitySet="UserData" />
+      <End Role="Заметки пользователя" EntitySet="Заметки пользователя" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Избранное пользователя_Title" Association="Self.FK_Избранное пользователя_Title">
+      <End Role="Title" EntitySet="Title" />
+      <End Role="Избранное пользователя" EntitySet="Избранное пользователя" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Избранное пользователя_UserData" Association="Self.FK_Избранное пользователя_UserData">
+      <End Role="UserData" EntitySet="UserData" />
+      <End Role="Избранное пользователя" EntitySet="Избранное пользователя" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

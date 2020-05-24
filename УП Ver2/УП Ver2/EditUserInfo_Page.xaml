@@ -1,0 +1,182 @@
+﻿<Window x:Class="УП_Ver2.EditUserInfo_Page"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:УП_Ver2"
+        mc:Ignorable="d"
+        Title="Выбор пользователя" 
+        Height="370" 
+        Width="370"
+        Background="Black"
+        ResizeMode="NoResize"
+        x:Name="DeletePage">
+    <Grid>
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="39*"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="240*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock
+            Text="Логин:"
+            Foreground="White"
+            Grid.Row="1"
+            Grid.Column="0"
+            FontSize="10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center">
+        </TextBlock>
+        <TextBlock
+            Text="Новое имя:"
+            Foreground="White"
+            Grid.Row="4"
+            Grid.Column="0"
+            FontSize="10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center">
+        </TextBlock>
+        <TextBlock
+            Text="Новая фамилия:"
+            Foreground="White"
+            Grid.Row="5"
+            Grid.Column="0"
+            FontSize="10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center">
+        </TextBlock>
+        <TextBlock
+            Text="Новый телефон:"
+            Foreground="White"
+            Grid.Row="6"
+            Grid.Column="0"
+            FontSize="10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center">
+        </TextBlock>
+        <!--Наименования для полей заполнения.-->
+        
+        <Image
+            Source="Символ 2.png"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.RowSpan="9"
+            Grid.ColumnSpan="2"
+            Opacity="0.1"
+            Stretch="Uniform">
+        </Image>
+        
+        <!--Картинка-->
+        
+
+        <TextBox
+            Text="1"
+            HorizontalAlignment="Left"
+            Margin="5"
+            VerticalAlignment="Center"
+            Background="Black"
+            Foreground="White"
+            Grid.Row="1"
+            Grid.Column="1"
+            BorderThickness="3"
+            BorderBrush="Yellow"
+            Height="20"
+            Width="230"
+            x:Name="LoginUser">
+        </TextBox>
+        <TextBox
+            Text="5"
+            HorizontalAlignment="Left"
+            Margin="5"
+            VerticalAlignment="Center"
+            Background="Black"
+            Foreground="White"
+            Grid.Row="4"
+            Grid.Column="1"
+            BorderThickness="3"
+            BorderBrush="Yellow"
+            Height="20"
+            Width="230"
+            x:Name="NameUser"
+            IsEnabled="False">
+        </TextBox>
+        <TextBox
+            Text="5"
+            HorizontalAlignment="Left"
+            Margin="5"
+            VerticalAlignment="Center"
+            Background="Black"
+            Foreground="White"
+            Grid.Row="5"
+            Grid.Column="1"
+            BorderThickness="3"
+            BorderBrush="Yellow"
+            Height="20"
+            Width="230"
+            x:Name="FemaleUser"
+            IsEnabled="False">
+        </TextBox>
+        <TextBox
+            Text="5"
+            HorizontalAlignment="Left"
+            Margin="5"
+            VerticalAlignment="Center"
+            Background="Black"
+            Foreground="White"
+            Grid.Row="6"
+            MaxLength="11"
+            Grid.Column="1"
+            BorderThickness="3"
+            BorderBrush="Yellow"
+            Height="20"
+            Width="230"
+            x:Name="PhoneUser"
+            PreviewTextInput="PhoneUser_PreviewTextInput"
+            IsEnabled="False">
+        </TextBox>
+        <!--Поля ввода-->
+
+        <Button
+            HorizontalAlignment="Left"
+            Margin="5,0,0,0"
+            Grid.Row="2"
+            Grid.Column="1"
+            Height="40"
+            Width="230"
+            Background="Yellow"
+            BorderBrush="Black"
+            BorderThickness="3"
+            Content="Продолжить"
+            x:Name="ContinueEditUserInfo" 
+            Click="ContinueEditUserInfo_Click">
+        </Button>
+        <Button
+            HorizontalAlignment="Left"
+            Margin="5,0,0,0"
+            Grid.Row="7"
+            Grid.Column="1"
+            Height="40"
+            Width="230"
+            Background="Yellow"
+            BorderBrush="Black"
+            BorderThickness="3"
+            Content="Завершить"
+            x:Name="EndEditUserInfo" 
+            Click="EndEditUserInfo_Click"
+            IsEnabled="False">
+        </Button>
+        <!--Кнопка "Продолжить" и "Завершить"-->
+    </Grid>
+
+</Window>

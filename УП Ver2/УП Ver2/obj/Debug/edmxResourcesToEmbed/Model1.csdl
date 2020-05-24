@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="УП2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Name">
+    <Key>
+      <PropertyRef Name="ID_Названия" />
+    </Key>
+    <Property Name="ID_Названия" Type="Int32" Nullable="false" />
+    <Property Name="Название" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Класс_ПО" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Дата" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Title" Relationship="Self.FK_Name_Title" FromRole="Name" ToRole="Title" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Роль" />
+    </Key>
+    <Property Name="Роль" Type="String" MaxLength="13" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="UserData" Relationship="Self.FK_UserData_Role" FromRole="Role" ToRole="UserData" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Title">
+    <Key>
+      <PropertyRef Name="Класс_ПО" />
+    </Key>
+    <Property Name="Класс_ПО" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Name" Relationship="Self.FK_Name_Title" FromRole="Title" ToRole="Name" />
+    <NavigationProperty Name="Заметки_пользователя" Relationship="Self.FK_Заметки_пользователя_Title" FromRole="Title" ToRole="Заметки_пользователя" />
+    <NavigationProperty Name="Избранное_пользователя" Relationship="Self.FK_Избранное_пользователя_Title" FromRole="Title" ToRole="Избранное_пользователя" />
+  </EntityType>
+  <EntityType Name="UserData">
+    <Key>
+      <PropertyRef Name="login" />
+    </Key>
+    <Property Name="login" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="pass" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Имя" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Фамилия" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Телефон" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+    <Property Name="Роль" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_UserData_Role" FromRole="UserData" ToRole="Role" />
+    <NavigationProperty Name="Заметки_пользователя" Relationship="Self.FK_Заметки_пользователя_UserData" FromRole="UserData" ToRole="Заметки_пользователя" />
+    <NavigationProperty Name="Избранное_пользователя" Relationship="Self.FK_Избранное_пользователя_UserData" FromRole="UserData" ToRole="Избранное_пользователя" />
+  </EntityType>
+  <EntityType Name="Заметки_пользователя">
+    <Key>
+      <PropertyRef Name="Номер_заметки" />
+    </Key>
+    <Property Name="Номер_заметки" Type="Int32" Nullable="false" />
+    <Property Name="Логин" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Класс_ПО" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Title" Relationship="Self.FK_Заметки_пользователя_Title" FromRole="Заметки_пользователя" ToRole="Title" />
+    <NavigationProperty Name="UserData" Relationship="Self.FK_Заметки_пользователя_UserData" FromRole="Заметки_пользователя" ToRole="UserData" />
+  </EntityType>
+  <EntityType Name="Избранное_пользователя">
+    <Key>
+      <PropertyRef Name="Номер_избранного" />
+    </Key>
+    <Property Name="Номер_избранного" Type="Int32" Nullable="false" />
+    <Property Name="Логин" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Класс_ПО" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Title" Relationship="Self.FK_Избранное_пользователя_Title" FromRole="Избранное_пользователя" ToRole="Title" />
+    <NavigationProperty Name="UserData" Relationship="Self.FK_Избранное_пользователя_UserData" FromRole="Избранное_пользователя" ToRole="UserData" />
+  </EntityType>
+  <Association Name="FK_Name_Title">
+    <End Role="Title" Type="Self.Title" Multiplicity="1" />
+    <End Role="Name" Type="Self.Name" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Title">
+        <PropertyRef Name="Класс_ПО" />
+      </Principal>
+      <Dependent Role="Name">
+        <PropertyRef Name="Класс_ПО" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserData_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="UserData" Type="Self.UserData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Роль" />
+      </Principal>
+      <Dependent Role="UserData">
+        <PropertyRef Name="Роль" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заметки_пользователя_Title">
+    <End Role="Title" Type="Self.Title" Multiplicity="0..1" />
+    <End Role="Заметки_пользователя" Type="Self.Заметки_пользователя" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Title">
+        <PropertyRef Name="Класс_ПО" />
+      </Principal>
+      <Dependent Role="Заметки_пользователя">
+        <PropertyRef Name="Класс_ПО" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Избранное_пользователя_Title">
+    <End Role="Title" Type="Self.Title" Multiplicity="0..1" />
+    <End Role="Избранное_пользователя" Type="Self.Избранное_пользователя" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Title">
+        <PropertyRef Name="Класс_ПО" />
+      </Principal>
+      <Dependent Role="Избранное_пользователя">
+        <PropertyRef Name="Класс_ПО" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заметки_пользователя_UserData">
+    <End Role="UserData" Type="Self.UserData" Multiplicity="0..1" />
+    <End Role="Заметки_пользователя" Type="Self.Заметки_пользователя" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserData">
+        <PropertyRef Name="login" />
+      </Principal>
+      <Dependent Role="Заметки_пользователя">
+        <PropertyRef Name="Логин" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Избранное_пользователя_UserData">
+    <End Role="UserData" Type="Self.UserData" Multiplicity="0..1" />
+    <End Role="Избранное_пользователя" Type="Self.Избранное_пользователя" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserData">
+        <PropertyRef Name="login" />
+      </Principal>
+      <Dependent Role="Избранное_пользователя">
+        <PropertyRef Name="Логин" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="УП2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Name" EntityType="Self.Name" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Title" EntityType="Self.Title" />
+    <EntitySet Name="UserData" EntityType="Self.UserData" />
+    <EntitySet Name="Заметки_пользователя" EntityType="Self.Заметки_пользователя" />
+    <EntitySet Name="Избранное_пользователя" EntityType="Self.Избранное_пользователя" />
+    <AssociationSet Name="FK_Name_Title" Association="Self.FK_Name_Title">
+      <End Role="Title" EntitySet="Title" />
+      <End Role="Name" EntitySet="Name" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserData_Role" Association="Self.FK_UserData_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserData" EntitySet="UserData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заметки_пользователя_Title" Association="Self.FK_Заметки_пользователя_Title">
+      <End Role="Title" EntitySet="Title" />
+      <End Role="Заметки_пользователя" EntitySet="Заметки_пользователя" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Избранное_пользователя_Title" Association="Self.FK_Избранное_пользователя_Title">
+      <End Role="Title" EntitySet="Title" />
+      <End Role="Избранное_пользователя" EntitySet="Избранное_пользователя" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заметки_пользователя_UserData" Association="Self.FK_Заметки_пользователя_UserData">
+      <End Role="UserData" EntitySet="UserData" />
+      <End Role="Заметки_пользователя" EntitySet="Заметки_пользователя" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Избранное_пользователя_UserData" Association="Self.FK_Избранное_пользователя_UserData">
+      <End Role="UserData" EntitySet="UserData" />
+      <End Role="Избранное_пользователя" EntitySet="Избранное_пользователя" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

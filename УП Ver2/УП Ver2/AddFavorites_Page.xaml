@@ -1,0 +1,132 @@
+﻿<Window x:Class="УП_Ver2.AddFavorites_Page"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:УП_Ver2"
+        mc:Ignorable="d"
+        Title="Добавить избранное" Height="450" Width="450"
+        ResizeMode="NoResize"
+        Background="Black">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="136*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="145*"/>
+            <ColumnDefinition Width="299*"/>
+        </Grid.ColumnDefinitions>
+        <Button
+            Background="Yellow"
+            BorderBrush="Black"
+            BorderThickness="3"
+            Content="Закончить"
+            Grid.Column="2"
+            Grid.Row="7"
+            Height="40"
+            Width="250"
+            VerticalAlignment="Top"
+            x:Name="FinishAddFavorites" 
+            Click="FinishAddFavorites_Click">
+        </Button>
+        <!--Кнопка завершения добавления "избранного"-->
+        <TextBox
+            x:Name="Логин"
+            Margin="7"
+            Grid.Row="3"
+            Grid.Column="2"
+            FontSize="14"
+            Background="Black"
+            Foreground="White"
+            BorderThickness="3"
+            BorderBrush="Yellow">
+
+        </TextBox>
+        <TextBox 
+            x:Name="Номер_избранного"
+            Margin="7"
+            Grid.Row="2"
+            Grid.Column="2"
+            FontSize="14"
+            Background="Black"
+            Foreground="White"
+            BorderThickness="3"
+            BorderBrush="Yellow">
+
+        </TextBox>
+        <!--Поля для ввода-->
+        <ComboBox
+            x:Name="Класс_ПО"
+            Margin="7"
+            Grid.Row="4"
+            Grid.Column="2"
+            FontSize="14"
+            Background="Black"
+            Foreground="Black"
+            BorderThickness="3"
+            BorderBrush="Yellow">
+            <TextBlock>BIOS и иное встроенное программное обеспечение</TextBlock>
+            <TextBlock>Библиотеки подпрограмм (SDK)</TextBlock>
+            <TextBlock>Встроенное программное обеспечение телекоммуникационного оборудования</TextBlock>
+            <TextBlock>Геоинформационные и навигационные системы (GIS)</TextBlock>
+            <TextBlock>Информационные системы для решения специфических отраслевых задач"</TextBlock>
+            <TextBlock>Лингвистическое программное обеспечение</TextBlock>
+            <TextBlock>Операционные системы</TextBlock>
+            <TextBlock>Офисные приложения</TextBlock>
+            <TextBlock>Поисковые системы</TextBlock>
+            <TextBlock>Прикладное программное обеспечение общего назначения</TextBlock>
+            <TextBlock>Серверное и связующее программное обеспечение</TextBlock>
+            <TextBlock>Системы анализа исходного кода на закладки и уязвимости</TextBlock>
+            <TextBlock>Системы мониторинга и управления</TextBlock>
+            <TextBlock>Системы сбора, хранения, обработки, анализа, моделирования и визуализации массивов данных</TextBlock>
+            <TextBlock>Системы управления базами данных</TextBlock>
+            <TextBlock>Системы управления проектами, исследованиями, разработкой, проектированием и внедрением</TextBlock>
+            <TextBlock>Системы управления процессами организации</TextBlock>
+            <TextBlock>Специализированное ПО органов исполнительной власти Российской Федерации, государственных корпораций, компаний и юридических лиц с преимущественным участием РФ для внутреннего использования</TextBlock>
+            <TextBlock>Средства обеспечения информационной безопасности</TextBlock>
+            <TextBlock>Средства обеспечения облачных и распределенных вычислений, средства виртуализации и системы хранения данных</TextBlock>
+            <TextBlock>Средства подготовки исполнимого кода</TextBlock>
+            <TextBlock>Среды разработки, тестирования и отладки</TextBlock>
+            <TextBlock>Утилиты и драйверы</TextBlock>
+
+        </ComboBox>
+        <!--Поле выбора Класса ПО-->
+        <TextBlock
+            Margin="4"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Grid.Row="2"
+            Grid.Column="0"
+            Text="Номер избранного:"
+            Foreground="White">
+
+        </TextBlock>
+        <TextBlock
+             Margin="4"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Grid.Row="3"
+            Grid.Column="0"
+            Text="Логин:"
+            Foreground="White">
+
+        </TextBlock>
+        <TextBlock
+             Margin="4"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Grid.Row="4"
+            Grid.Column="0"
+            Foreground="White"
+            Text="Класс ПО:">
+
+        </TextBlock>
+        <!--Наименования к полям ввода-->
+    </Grid>
+</Window>

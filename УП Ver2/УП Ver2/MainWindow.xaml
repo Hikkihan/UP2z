@@ -1,0 +1,175 @@
+﻿<Window x:Class="УП_Ver2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:УП_Ver2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Background="Black">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="90*"/>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="130*"/>
+            <ColumnDefinition Width="12*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="309*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel
+            Grid.Row="0"
+            Background="Yellow" 
+            Grid.ColumnSpan="11" 
+            Grid.RowSpan="3"/>
+        <!--Верхняя жёлтая панель.-->
+        <Button
+            Grid.Row="1"
+            Background="Yellow"
+            BorderThickness="0"
+            Grid.Column="9"  
+            >
+            <TextBlock
+                    Text="Switch to English"
+                    Foreground="Black"
+                    FontSize="13"
+                    FontFamily="TimesNewRoman"
+                    FontWeight="DemiBold"
+                    />
+        </Button>
+        <!--Кнопка Switch to English.-->
+        <Image
+            Grid.Column="1"
+            Grid.Row="0"
+            Source="Символ.png"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center" 
+            Stretch="Uniform"
+            Grid.RowSpan="3"
+            />
+        <!--Символ на верхней панели.-->
+        <TextBox
+            Grid.Row="1"
+            Grid.Column="4"
+            Background="Black"
+            Foreground="White"
+            />
+        <!--Строка поиска на верхней панели.-->
+        <Image
+            Grid.Column="3"
+            Grid.Row="1"
+            Source="Поиск.png"
+            Stretch="Uniform"
+            />
+        <!--Символ поиска на верхней панели.-->
+        <Button
+                Grid.Row="6"
+                Grid.Column="8"
+                Background="Black"
+                Click="Button_Click">
+            <Viewbox>
+                <TextBlock   
+                Text="Войти"
+                Foreground="White"
+                FontFamily="TimesNewRoman">
+                </TextBlock>
+            </Viewbox>
+
+        </Button>
+        
+        <!--Кнопка "Войти".-->
+        <TextBox
+            Text="Hikkihan"
+            Name="loginField" 
+            Background="Black"
+            Foreground="White"
+            Grid.Row="4"
+            Grid.ColumnSpan="2" 
+            Grid.Column="8"
+            />
+        <!--Строка ввода Логина.-->
+        <TextBox
+            Text="123123"
+            Grid.Row="5"
+            Background="Black"
+            Foreground="White"
+            Name="passField" 
+            Grid.ColumnSpan="2" 
+            Grid.Column="8"/>
+        <!--Строка ввода пароля.-->
+        <Viewbox
+            Grid.Row="4"
+            Grid.Column="7"
+            HorizontalAlignment="Left">
+            <TextBlock
+            Text="Логин:"
+            Background="Black"
+            Foreground="White">
+            </TextBlock>
+        </Viewbox>
+        <Button
+                Grid.Row="6"
+                Grid.Column="9"
+                Background="Black"
+                Name="Registration"
+                Click="Registration_Click" >
+            <Viewbox>
+                <TextBlock
+                    Text="Зарегистрироваться"
+                    Foreground="White"
+                    FontFamily="TimesNewRoman" />
+            </Viewbox>
+        </Button>
+        <!--Кнопка "Зарегистрироваться"-->
+        <Viewbox
+            Grid.Row="5"
+            Grid.Column="7"
+            HorizontalAlignment="Right"
+            Margin="0,0,5,0">
+            <TextBlock
+            Text="Пароль:"
+            Background="Black"
+            Foreground="White"
+            HorizontalAlignment="Left">
+            </TextBlock>
+        </Viewbox>
+        <Viewbox
+            Grid.Row="4"
+            Grid.Column="2"
+            Grid.RowSpan="3" 
+            Grid.ColumnSpan="4">
+            <TextBlock
+                Text="Welcome to our website!"
+                Foreground="White"
+                FontFamily="TimesNewRoman"
+                FontWeight="DemiBold"
+                >
+            </TextBlock>
+        </Viewbox>
+        <!--Текст на основной форме.-->
+        <Image
+            Grid.Column="2"
+            Grid.Row="7"
+            Source="Символ 2.png"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"  
+            Grid.ColumnSpan="4"
+            />
+        <!--Картинка основной формы.-->
+        
+    </Grid>
+</Window>

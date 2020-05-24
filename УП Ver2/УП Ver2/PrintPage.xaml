@@ -1,0 +1,154 @@
+﻿<Window x:Class="УП_Ver2.PrintPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:УП_Ver2"
+        mc:Ignorable="d"
+        Title="Окно печати" 
+        Height="450" 
+        Width="800"
+        Loaded="Window_Loaded" 
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        ResizeMode="NoResize"
+       >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="55*"/>
+            <ColumnDefinition Width="175*"/>
+            <ColumnDefinition Width="115*"/>
+            <ColumnDefinition Width="51*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="364*"/>
+        </Grid.RowDefinitions>
+        <ListBox
+            x:Name="OpenDB"
+            Grid.Row="2"
+            Grid.ColumnSpan="4">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <StackPanel 
+                            VerticalAlignment="Center">
+                            <Viewbox>
+                                <TextBlock
+                                    Margin="0,0,0,0"
+                                    FontWeight="SemiBold"
+                                    Text="{Binding Path=ID_Названия}">
+                                </TextBlock>
+                            </Viewbox>
+                        </StackPanel>
+                        <!--Вывод данных из БД "ID Названия"-->
+                        <StackPanel>
+                            <StackPanel>
+                                <Viewbox>
+                                    <TextBlock
+                                    Margin="80,0,0,0"
+                                    Grid.Column="1"
+                                    HorizontalAlignment="Center"
+                                    TextWrapping="Wrap"
+                                    FontWeight="SemiBold"
+                                    Width="700"
+                                    Text="{Binding Path=Название}">
+                                    </TextBlock>
+                                </Viewbox>
+
+                            </StackPanel>
+                        </StackPanel> 
+                        <!--Вывод данных из БД "Название"-->
+                        <StackPanel>
+                            <StackPanel>
+                                <Viewbox>
+                                    <TextBlock
+                                    Margin="80,0,0,0"
+                                    TextWrapping="Wrap"
+                                    HorizontalAlignment="Center"
+                                    Width="400"
+                                    FontWeight="SemiBold"
+                                    Text="{Binding Path=Класс_ПО}">
+                                    </TextBlock>
+                                </Viewbox>
+
+                            </StackPanel>
+                        </StackPanel>
+                        <!--Вывод данных из БД "Класс ПО"-->
+                        <StackPanel>
+                            <Viewbox>
+                                <TextBlock
+                                    Margin="80,0,0,0"
+                                    HorizontalAlignment="Center"
+                                    Width="150"
+                                    TextWrapping="Wrap"
+                                    FontWeight="SemiBold"
+                                    Text="{Binding Path=Дата}">
+                                </TextBlock>
+                            </Viewbox>
+
+                        </StackPanel>
+                        <!--Вывод данных из БД "Дата"-->
+                    </StackPanel>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+        <!--Вывод данных из БД ПО-->
+        <Viewbox
+            Grid.Row="0"
+            Grid.ColumnSpan="4">
+            <TextBlock
+            Text="Отчёт"
+            FontWeight="SemiBold"
+            FontSize="20"
+            HorizontalAlignment="Center">
+            </TextBlock>
+        </Viewbox>
+        <!--Надпись "Отчёт"-->
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Text="ID Названия"
+            FontWeight="SemiBold"
+            HorizontalAlignment="Left">
+        </TextBlock>
+        <!--Надпись столбца "ID Названия"-->
+        <TextBlock
+                Grid.Row="1"
+            Grid.Column="1"
+            Text="Название"
+            FontWeight="SemiBold"
+            HorizontalAlignment="Center">
+        </TextBlock>
+        <!--Надпись столбца "Название"-->
+        <TextBlock
+                Grid.Row="1"
+            Grid.Column="2"
+            Text="Класс ПО"
+            FontWeight="SemiBold"
+            HorizontalAlignment="Stretch">
+        </TextBlock>
+        <!--Надпись столбца "Класс ПО"-->
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="3"
+            Text="Дата"
+            FontWeight="SemiBold"
+            HorizontalAlignment="Stretch">
+            
+        </TextBlock>
+        <!--Надпись столбца "Дата"-->
+        <Line
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="4" 
+            Height="40">
+        </Line>
+        <!--Линия ограничения между столбцами и данными-->
+        
+    </Grid>
+</Window>
